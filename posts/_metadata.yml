@@ -2,16 +2,13 @@
 
 # freeze computational output
 # (see https://quarto.org/docs/projects/code-execution.html#freeze)
-freeze: true
+freeze: false
 
 # Enable banner style title blocks
 title-block-banner: true
 
-#comments:
-#  giscus: 
-#    repo: EllaKaye/quarto-test
-
 include-in-header: giscus-toggle-full.html
+include-after-body: div-giscus.html
 
 citation: true
 license: CC BY-SA
