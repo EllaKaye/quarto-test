@@ -58,9 +58,9 @@ ul.task-list{list-style: none;}
   }
 }</script>
 <script>
-  function changeGiscusTheme () {
-    let modeToggle = new ModeToggle();
-    const theme = modeToggle.mode === 'dark' ?  'dark' : 'light'
+
+  function changeGiscusTheme() {
+    const theme = document.body.classList.contains('quarto-dark') ? 'dark' : 'light';
     function sendMessage(message) {
       const iframe = document.querySelector('iframe.giscus-frame');
       if (!iframe) return;
@@ -68,16 +68,16 @@ ul.task-list{list-style: none;}
     }
     sendMessage({
       setConfig: {
-        theme: theme
-      }
+        theme: theme,
+      },
     });
   }
   
-  const modeToggle = document.getElementsByClassName("quarto-color-scheme-toggle")[0];
-  
-  if (typeof modeToggle !== "undefined") {
-    modeToggle.addEventListener('click', changeGiscusTheme);
+  const toggle = document.querySelector('.quarto-color-scheme-toggle');
+  if (toggle) {
+    toggle.addEventListener('click', changeGiscusTheme);
   }
+
 </script>
 
 
