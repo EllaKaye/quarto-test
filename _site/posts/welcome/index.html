@@ -58,9 +58,14 @@ ul.task-list{list-style: none;}
   }
 }</script>
 <script>
+  
+  function getGiscusTheme() {
+  const quartoTheme = localStorage.getItem("quarto-color-scheme");
+  const giscusTheme = quartoTheme === "alternate" ? "dark" : "light";
+  return giscusTheme;
+}
 
-function changeGiscusTheme() {
-  const theme = document.body.classList.contains('quarto-dark') ? 'dark' : 'light';
+function setGiscusTheme() {
   function sendMessage(message) {
     const iframe = document.querySelector('iframe.giscus-frame');
     if (!iframe) return;
@@ -68,18 +73,41 @@ function changeGiscusTheme() {
   }
   sendMessage({
     setConfig: {
-      theme: theme,
+      theme: getGiscusTheme(),
     },
   });
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  const giscusAttributes = {
+    "src": "https://giscus.app/client.js",
+    "data-repo": "EllaKaye/quarto-test",
+    "data-repo-id": "R_kgDOH0NdkA",
+    "data-category": "General",
+    "data-category-id": "DIC_kwDOH0NdkM4CQ0Bg",
+    "data-mapping": "pathname",
+    "data-strict": "0",
+    "data-reactions-enabled": "1",
+    "data-emit-metadata": "0",
+    "data-input-position": "top",
+    "data-theme": getGiscusTheme(),
+    "data-lang": "en",
+    "crossorigin": "anonymous",
+    "async": "",
+  };
+
+  // Dynamically create script tag
+  const giscusScript = document.createElement("script");
+  Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+  document.body.appendChild(giscusScript);
+
+  // Update giscus theme when theme switcher is clicked
   const toggle = document.querySelector('.quarto-color-scheme-toggle');
   if (toggle) {
-    toggle.addEventListener('click', changeGiscusTheme);
+    toggle.addEventListener('click', setGiscusTheme);
   }
 });
-
+  
 </script>
 
 
@@ -166,10 +194,24 @@ document.addEventListener('DOMContentLoaded', function () {
 <p>This is the first post in a Quarto blog. Welcome!</p>
 <p><img src="thumbnail.jpg" class="img-fluid"></p>
 <p>Since this post doesn’t specify an explicit <code>image</code>, the first image in the post will be used in the listing page of posts.</p>
+<div class="giscus">
 
 
 
-</main> <!-- /main -->
+
+
+
+
+</div><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">https://creativecommons.org/licenses/by-sa/4.0/</a></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{o'malley2022,
+  author = {Tristan O’Malley},
+  title = {Welcome {To} {My} {Blog}},
+  date = {2022-08-10},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-o'malley2022" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
+Tristan O’Malley. 2022. <span>“Welcome To My Blog.”</span> August 10,
+2022.
+</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -369,8 +411,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     });
   }
 });
-</script>
-<script src="https://giscus.app/client.js" data-repo="EllaKaye/quarto-test" data-repo-id="R_kgDOH0NdkA" data-category="General" data-category-id="DIC_kwDOH0NdkM4CQ0Bg" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
 

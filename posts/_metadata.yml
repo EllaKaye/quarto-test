@@ -7,8 +7,11 @@ freeze: true
 # Enable banner style title blocks
 title-block-banner: true
 
-comments:
-  giscus: 
-    repo: EllaKaye/quarto-test
+#comments:
+#  giscus: 
+#    repo: EllaKaye/quarto-test
 
-include-in-header: giscus-mode-toggle.html
+include-in-header: giscus-toggle-full.html
+
+citation: true
+license: CC BY-SA

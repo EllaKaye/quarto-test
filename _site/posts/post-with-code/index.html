@@ -121,9 +121,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 <script>
+  
+  function getGiscusTheme() {
+  const quartoTheme = localStorage.getItem("quarto-color-scheme");
+  const giscusTheme = quartoTheme === "alternate" ? "dark" : "light";
+  return giscusTheme;
+}
 
-function changeGiscusTheme() {
-  const theme = document.body.classList.contains('quarto-dark') ? 'dark' : 'light';
+function setGiscusTheme() {
   function sendMessage(message) {
     const iframe = document.querySelector('iframe.giscus-frame');
     if (!iframe) return;
@@ -131,18 +136,41 @@ function changeGiscusTheme() {
   }
   sendMessage({
     setConfig: {
-      theme: theme,
+      theme: getGiscusTheme(),
     },
   });
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  const giscusAttributes = {
+    "src": "https://giscus.app/client.js",
+    "data-repo": "EllaKaye/quarto-test",
+    "data-repo-id": "R_kgDOH0NdkA",
+    "data-category": "General",
+    "data-category-id": "DIC_kwDOH0NdkM4CQ0Bg",
+    "data-mapping": "pathname",
+    "data-strict": "0",
+    "data-reactions-enabled": "1",
+    "data-emit-metadata": "0",
+    "data-input-position": "top",
+    "data-theme": getGiscusTheme(),
+    "data-lang": "en",
+    "crossorigin": "anonymous",
+    "async": "",
+  };
+
+  // Dynamically create script tag
+  const giscusScript = document.createElement("script");
+  Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+  document.body.appendChild(giscusScript);
+
+  // Update giscus theme when theme switcher is clicked
   const toggle = document.querySelector('.quarto-color-scheme-toggle');
   if (toggle) {
-    toggle.addEventListener('click', changeGiscusTheme);
+    toggle.addEventListener('click', setGiscusTheme);
   }
 });
-
+  
 </script>
 
 
@@ -235,10 +263,22 @@ document.addEventListener('DOMContentLoaded', function () {
 <pre><code>[1] 2</code></pre>
 </div>
 </div>
+<div class="giscus">
 
 
 
-</main> <!-- /main -->
+
+
+
+</div><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">https://creativecommons.org/licenses/by-sa/4.0/</a></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{malloc2022,
+  author = {Harlow Malloc},
+  title = {Post {With} {Code}},
+  date = {2022-08-13},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-malloc2022" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
+Harlow Malloc. 2022. <span>“Post With Code.”</span> August 13, 2022.
+</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -438,8 +478,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     });
   }
 });
-</script>
-<script src="https://giscus.app/client.js" data-repo="EllaKaye/quarto-test" data-repo-id="R_kgDOH0NdkA" data-category="General" data-category-id="DIC_kwDOH0NdkM4CQ0Bg" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
 
