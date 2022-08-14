@@ -7,7 +7,7 @@ freeze: false
 # Enable banner style title blocks
 title-block-banner: true
 
-include-in-header: giscus-toggle-full.html
+include-in-header: giscus-mode-toggle.html
 include-after-body: div-giscus.html
 
 citation: true
