@@ -4,11 +4,54 @@ author: "Harlow Malloc"
 date: "2022-08-13"
 categories: [news, code, analysis]
 image: "image.jpg"
+draft: true
 ---
 
-This is a post with executable code.
+Some inline code: `x <- y`, `x != g0`. `1/2` `m^2`
+
+`---` `{|` `<=`
+
+- Unicode: U+25D4 *doesn't work*
+
+- Unicode: &#25D4; *doesn't work*
+
+- Using **Insert** in Visual mode works: ◔
+
+<https://quarto.org/docs/visual-editor/content.html#unicode-symbols>
+
+`&#25D4;` `U+25D4`
+
+Some code:
 
 ```{r}
-1 + 1
+library(dplyr)
+library(palmerpenguins)
+
+penguins %>%
+  mutate(
+    long_flipper = case_when(
+      species == "Adelie" & flipper_length_mm > 195 ~ TRUE,
+      species == "Chinstrap" & flipper_length_mm > 200 ~ TRUE,
+      species == "Gentoo" & flipper_length_mm > 225 ~ TRUE,
+      TRUE ~ FALSE
+    )
+  )
+
+x <- 1/2 
+TRUE != FALSE # a comment
+
 ```
 
+A plot (too much whitespace):
+
+```{r fig-colour-theory-palette, eval = FALSE, echo = FALSE, fig.cap = "Colours for syntax highlighting, starting from my main pink, based only on colour theory", fig.alt="A swatch of five colours, very bright and vibrant shades of pink, orange, green, blue and purple."}
+#| fig.width: 5
+#| fig.height: 1
+library(colorspace)
+ek_pure_highlight_colours <- c("#D4006A", "#D46A00", "#00D46A", "#006AD4", "#6A00D4")
+swatchplot(ek_pure_highlight_colours, border = "transparent") 
+# Using the above code gives too much white around the swatches, so I ran the code, took a screen shot to crop it, then include that image back in.
+#knitr::include_graphics("first-colour-swatch.png")
+```
+
+Another plot

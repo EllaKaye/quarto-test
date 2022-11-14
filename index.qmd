@@ -3,12 +3,39 @@ title: "quarto-test"
 listing:
   contents: posts
   sort: "date desc"
-  type: default
+  type: grid
   categories: true
   sort-ui: false
   filter-ui: false
 page-layout: full
 title-block-banner: true
+knitr:
+  opts_chunk: 
+    collapse: true
+execute: 
+  echo: false
 ---
 
+
+```{css}
+#| eval: false
+h1.title {
+  color: #D4006A;
+}
+
+.quarto-dark h1.title {
+  color: #00D46A;
+}
+```
+
+```{css}
+#| eval: false
+h1.title {
+  color: $pink;
+}
+
+.quarto-dark h1.title {
+  color: $green;
+}
+```
 

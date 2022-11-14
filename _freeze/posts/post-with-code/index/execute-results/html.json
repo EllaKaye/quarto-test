@@ -1,0 +1,14 @@
+{
+  "hash": "9eb7e815181b322d9b1b35e1c4fa9b8c",
+  "result": {
+    "markdown": "---\ntitle: \"Post With Code\"\nauthor: \"Harlow Malloc\"\ndate: \"2022-08-13\"\ncategories: [news, code, analysis]\nimage: \"image.jpg\"\ndraft: true\n---\n\n\nSome inline code: `x <- y`, `x != g0`. `1/2` `m^2`\n\n`---` `{|` `<=`\n\n- Unicode: U+25D4 *doesn't work*\n\n- Unicode: &#25D4; *doesn't work*\n\n- Using **Insert** in Visual mode works: ◔\n\n<https://quarto.org/docs/visual-editor/content.html#unicode-symbols>\n\n`&#25D4;` `U+25D4`\n\nSome code:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(dplyr)\n```\n\n::: {.cell-output .cell-output-stderr}\n```\n\nAttaching package: 'dplyr'\n```\n:::\n\n::: {.cell-output .cell-output-stderr}\n```\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n```\n:::\n\n::: {.cell-output .cell-output-stderr}\n```\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n```\n:::\n\n```{.r .cell-code}\nlibrary(palmerpenguins)\n\npenguins %>%\n  mutate(\n    long_flipper = case_when(\n      species == \"Adelie\" & flipper_length_mm > 195 ~ TRUE,\n      species == \"Chinstrap\" & flipper_length_mm > 200 ~ TRUE,\n      species == \"Gentoo\" & flipper_length_mm > 225 ~ TRUE,\n      TRUE ~ FALSE\n    )\n  )\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n# A tibble: 344 × 9\n   species island    bill_length_mm bill_d…¹ flipp…² body_…³ sex    year long_…⁴\n   <fct>   <fct>              <dbl>    <dbl>   <int>   <int> <fct> <int> <lgl>  \n 1 Adelie  Torgersen           39.1     18.7     181    3750 male   2007 FALSE  \n 2 Adelie  Torgersen           39.5     17.4     186    3800 fema…  2007 FALSE  \n 3 Adelie  Torgersen           40.3     18       195    3250 fema…  2007 FALSE  \n 4 Adelie  Torgersen           NA       NA        NA      NA <NA>   2007 FALSE  \n 5 Adelie  Torgersen           36.7     19.3     193    3450 fema…  2007 FALSE  \n 6 Adelie  Torgersen           39.3     20.6     190    3650 male   2007 FALSE  \n 7 Adelie  Torgersen           38.9     17.8     181    3625 fema…  2007 FALSE  \n 8 Adelie  Torgersen           39.2     19.6     195    4675 male   2007 FALSE  \n 9 Adelie  Torgersen           34.1     18.1     193    3475 <NA>   2007 FALSE  \n10 Adelie  Torgersen           42       20.2     190    4250 <NA>   2007 FALSE  \n# … with 334 more rows, and abbreviated variable names ¹​bill_depth_mm,\n#   ²​flipper_length_mm, ³​body_mass_g, ⁴​long_flipper\n```\n:::\n\n```{.r .cell-code}\nx <- 1/2 \nTRUE != FALSE # a comment\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] TRUE\n```\n:::\n:::\n\n\nA plot (too much whitespace):\n\n\n::: {.cell}\n\n:::\n\n\nAnother plot\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

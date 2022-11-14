@@ -13,7 +13,10 @@ about:
     - icon: github
       text: Github
       href: https://github.com
-
 ---
 
 About this blog
+
+[My website](https://ellakaye.rbind.io).
+
+[My website (new tab)](https://ellakaye.rbind.io){target="_blank"}
